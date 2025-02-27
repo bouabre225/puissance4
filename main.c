@@ -30,6 +30,11 @@ void gotoxy(int x, int y)
     SetConsoleCursorPosition(hConsoleOutput,dwCursorPosition);
 }
 
+void clrscr()
+{
+  system("cls");
+}
+
 // Fonction pour dessiner la grille
 void grille4puissance ()
 {
@@ -144,7 +149,79 @@ void grille4puissance ()
 
 void init_jeu()
 {
-    
+    char p1; char p2; int verif = 0; int taille; int tour; int victoire = 0;
+
+    gotoxy(8,22);printf("Nom Joueur 1:");
+    gotoxy(8,23);printf("Nom Joueur 2:");
+    gotoxy(22,22);scanf("%s", &jou1.nom);
+    gotoxy(22,22);scanf("%s", &jou2.nom);
+    srand(time(NULL));
+    int random = 1 + rand() % 2;
+
+    do 
+    {
+        if (random == 1)
+        {
+            gotoxy(8,25);printf("%s choisis ton symbole (X/O):", jou1.nom);
+            taille = strlen(jou1.nom);
+            gotoxy(37+taille,25);scanf(" %c", &jou1.symbole);
+        } else 
+        {
+            gotoxy(8,25);printf("%s choisi ton symbole (X/O):", jou2.nom); 
+            taille = strlen(jou2.nom);
+            gotoxy(37+taille,25);scanf(" %c", &jou2.symbole);
+        }
+
+        if (jou1.symbole!= 'X' && jou1.symbole!= 'O' && jou2.symbole!= 'X' && jou2.symbole!= 'O')
+        {
+            gotoxy(8,26);printf("Erreur veillez choisir entre (X/O)");
+        } else 
+        {
+            verif = 1;
+            if (jou1.symbole == 'X') jou2.symbole == 'O';
+            if (jou1.symbole == 'O') jou2.symbole == 'X';
+            if (jou2.symbole == 'X') jou1.symbole == 'O';
+            if (jou1.symbole == 'O') jou2.symbole == 'X';
+        }
+    } while (verif == 0);
+    clrscr();
+    grille4puissance();
+
+    gotoxy(80,8);printf("JEU DE PUISSANCE 4");
+    gotoxy(80,12);printf("Symbole de %s : %c" , jou1.nom, jou1.symbole);
+    gotoxy(80,12);printf("Symbole de %s : %c" , jou2.nom, jou2.symbole);
+
+    if ( random == 1)
+    {
+        gotoxy(80,17);printf("C'est %s qui commence.", jou1.nom);
+    } else 
+    {
+        gotoxy(80,17);printf("C'est %s qui commence.", jou2.nom);
+
+    }
+
+    tour = random;
+    int position1,position2;
+    do 
+    {
+        if (tour == 1 && victoire != 1)
+        {
+            do 
+            {
+                gotoxy(8,27);printf(" %s Entre un numero de colonne valide: ", jou1.nom);
+                gotoxy(38+taille,27);scanf("%d", &position1);
+            } while(position1 < 0 || position1 > 6);
+        }
+
+        if (tour == 2 && victoire != 1)
+        {
+            do 
+            {
+                gotoxy(8,27);printf(" %s Entre un numero de colonne valide: ", jou2.nom);
+                gotoxy(38+taille,27);scanf("%d", &position1);
+            } while(position1 < 0 || position1 > 6);
+        }
+    } while( victoire != 1);
 }
 
 int main ()
