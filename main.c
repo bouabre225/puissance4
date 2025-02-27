@@ -319,6 +319,14 @@ void jouer_colonne (int tour, int position)
     }
 }
 
+void verif_gain(char symbole, int position)
+{
+   int l; int compt = 0; int x = 38; int y = 22; int x2 = 55; int c = 0;int p = 0; int d = position;
+   
+    //vericale
+
+}
+
 int main ()
 {
     grille4puissance();
