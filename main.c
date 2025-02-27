@@ -4,19 +4,21 @@
 #include <conio.h>
 #include <windows.h>
 
-typedef struct Matrice;
+typedef struct Matrice Matrice;
 struct Matrice
 {
-    char Mat [6][7];
+    char Mat[6][7];
 };
 
-typedef struct Joueurs;
+typedef struct Joueurs Joueurs;
 struct Joueurs
 {
     char nom [100];
     char symbole;
 };
 
+Joueurs jou1, jou2;
+Matrice m;
 void gotoxy(int x, int y)
 {
     HANDLE hConsoleOutput;
@@ -140,7 +142,13 @@ void grille4puissance ()
     }
 }
 
+void init_jeu()
+{
+    
+}
+
 int main ()
 {
+    grille4puissance();
     return 0;
 }
