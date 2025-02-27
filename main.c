@@ -229,6 +229,94 @@ void jouer_colonne (int tour, int position)
     int l,col = 0; int newy = 7; int newx = 13; int a = position+1 ; int y = 0; int c = 4;
     char t; int b=0;
     
+    if (tour == 1)
+    {
+        while (col != position)
+        {
+            newx += 7;  
+            col++;
+        }
+        if (m.Mat[5][position] != 'X' && m.Mat[5][position] != 'O')
+        {
+            b = 0;
+            for (l = 0; l < 6; l++)
+            {
+                if (m.Mat[l][position] != 'X' && m.Mat[l][position] != '0')
+                {
+                    newy +=2;
+                }
+                if (l == 5)
+                {
+                    m.Mat[5][position]=jou1.symbole;
+                    gotoxy(newx-1,newy);printf("%c",m.Mat[l][position]);
+                }
+            }
+        } else 
+        {
+            if (m.Mat[0][position] != 'X' && m.Mat[0][position] != 'O')
+            {
+                for (l = 0; l < 6; l++)
+                {
+                    if (m.Mat[l][position] != 'X' && m.Mat[l][position] != 'O')
+                    {
+                        newy +=2;
+                    }
+                    if (m.Mat[l][position] == 'X' || m.Mat[l][position] == 'O')
+                    {
+                        if (m.Mat[l-1][position] != 'X' && m.Mat[l-1][position] != 'O')
+                        {
+                            m.Mat[l-1][position] = jou1.symbole;
+                            gotoxy(newx-1,newy);printf("%c",m.Mat[l-1][position]);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    if (tour == 2)
+    {
+        while (col != position)
+        {
+            newx += 7;  
+            col++;
+        }
+        if (m.Mat[5][position] != 'X' && m.Mat[5][position] != 'O')
+        {
+            for (l = 0; l < 6; l++)
+            {
+                if (m.Mat[l][position] != 'X' && m.Mat[l][position] != 'O')
+                {
+                    newy +=2;
+                }
+                if (l == 5)
+                {
+                    m.Mat[5][position] = jou2.symbole;
+                    gotoxy(newx-1,newy);printf("%c",m.Mat[l][position]);
+                }
+            }
+        } else 
+        {
+            if (m.Mat[0][position] != 'X' && m.Mat[0][position] != 'O')
+            {
+                for (l = 0; l < 6; l++)
+                {
+                    if (m.Mat[l][position] != 'X' && m.Mat[l][position] != 'O')
+                    {
+                        newy +=2;
+                    }
+                    if (m.Mat[l][position] == 'X' || m.Mat[l][position] == 'O')
+                    {
+                        if (m.Mat[l-1][position] != 'X' && m.Mat[l-1][position] != 'O')
+                        {
+                            m.Mat[l-1][position] = jou2.symbole;
+                            gotoxy(newx-1,newy);printf("%c",m.Mat[l-1][position]);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 int main ()
