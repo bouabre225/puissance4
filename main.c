@@ -224,6 +224,13 @@ void init_jeu()
     } while( victoire != 1);
 }
 
+void jouer_colonne (int tour, int position)
+{
+    int l,col = 0; int newy = 7; int newx = 13; int a = position+1 ; int y = 0; int c = 4;
+    char t; int b=0;
+    
+}
+
 int main ()
 {
     grille4puissance();
