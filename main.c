@@ -72,7 +72,72 @@ void grille4puissance ()
             compt++;
         } while (compt < col);
     }
-    
+    do 
+    {
+        if (ligne > 0 && ligne < 5)
+        {
+            newx = col;
+            compt = 0;
+            newy=b*haut+y;
+            for (compt = 0; compt < col; compt++)
+            {
+                for (i = 1; i < haut; i++)
+                {
+                    gotoxy(x,newy+i); printf("%c",179);
+                    gotoxy(x+newx,newy+i); printf("%c",179);
+                }
+                newx += col;
+            }
+            do 
+            {
+                gotoxy(x+j,newy+haut); printf("%c",196);a++;
+                if (col == a)
+                {
+                    gotoxy(x+j,newy+haut); printf("%c",197);
+                    a = 0;
+                }  
+                j++;
+            } while (j < lon);
+            j = 1;
+            a = 0;
+            gotoxy(x,newy+haut); printf("%c",179);
+            gotoxy(x+lon,newy+haut); printf("%c",179);
+        }
+        if (ligne < 5) printf ("%d", ligne);
+        ligne++;
+        b++;
+    } while (ligne < 7); 
+    newy=5*haut+y;
+    if (ligne == 7)
+    {
+        compt = 0;
+        gotoxy(x, newy+haut); printf("%c",192);
+        gotoxy(x+lon, newy+haut); printf("%c",217);printf("5");
+
+        for (i = 1; i < lon; i++)
+        {
+            gotoxy(x+i,newy+haut); printf("%c",196);
+            compt++;
+            if (col == compt)
+            {
+                gotoxy(x+i,newy+haut); printf("%c",193);
+                compt = 0;
+            }
+        }
+        newx = col;
+        compt = 0;
+
+        do 
+        {
+            for (i = 1; i < haut; i++)
+            {
+                gotoxy(x,newy+i); printf("%c",179);
+                gotoxy(x+newx,newy+i); printf("%c",179);
+            }
+            newx += col;
+            compt++;
+        } while (compt < col);
+    }
 }
 
 int main ()
