@@ -537,5 +537,7 @@ return 0;
 int main ()
 {
     grille4puissance();
+    init_jeu();
+    gotoxy(6,27);
     return 0;
 }
