@@ -158,7 +158,7 @@ void init_jeu()
     gotoxy(8,22);printf("Nom Joueur 1:");
     gotoxy(8,23);printf("Nom Joueur 2:");
     gotoxy(22,22);scanf("%s", &jou1.nom);
-    gotoxy(22,22);scanf("%s", &jou2.nom);
+    gotoxy(22,23);scanf("%s", &jou2.nom);
     srand(time(NULL));
     int random = 1 + rand() % 2;
 
@@ -185,7 +185,7 @@ void init_jeu()
             if (jou1.symbole == 'X') jou2.symbole == 'O';
             if (jou1.symbole == 'O') jou2.symbole == 'X';
             if (jou2.symbole == 'X') jou1.symbole == 'O';
-            if (jou1.symbole == 'O') jou2.symbole == 'X';
+            if (jou2.symbole == 'O') jou1.symbole == 'X';
         }
     } while (verif == 0);
     clrscr();
@@ -193,7 +193,7 @@ void init_jeu()
 
     gotoxy(80,8);printf("JEU DE PUISSANCE 4");
     gotoxy(80,12);printf("Symbole de %s : %c" , jou1.nom, jou1.symbole);
-    gotoxy(80,12);printf("Symbole de %s : %c" , jou2.nom, jou2.symbole);
+    gotoxy(80,13);printf("Symbole de %s : %c" , jou2.nom, jou2.symbole);
 
     if ( random == 1)
     {
@@ -213,7 +213,7 @@ void init_jeu()
             do 
             {
                 gotoxy(8,27);printf(" %s Entre un numero de colonne valide: ", jou1.nom);
-                gotoxy(38+taille,27);scanf("%d", &position1);
+                gotoxy(45+taille,27);scanf("%d", &position1);
             } while(position1 < 0 || position1 > 6);
             Jouer_colonne(tour,position1);
             victoire = Verif_gain(jou1.symbole,position1);
@@ -225,7 +225,7 @@ void init_jeu()
             do 
             {
                 gotoxy(8,27);printf(" %s Entre un numero de colonne valide: ", jou2.nom);
-                gotoxy(38+taille,27);scanf("%d", &position1);
+                gotoxy(45+taille,27);scanf("%d", &position1);
             } while(position1 < 0 || position1 > 6);
             Jouer_colonne(tour,position2);
             victoire = Verif_gain(jou2.symbole,position2);
