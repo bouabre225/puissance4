@@ -211,6 +211,9 @@ void init_jeu()
                 gotoxy(8,27);printf(" %s Entre un numero de colonne valide: ", jou1.nom);
                 gotoxy(38+taille,27);scanf("%d", &position1);
             } while(position1 < 0 || position1 > 6);
+            jouer_colonne(tour,position1);
+            victoire = verif_gain(jou1.symbole,position1);
+            tour=2;
         }
 
         if (tour == 2 && victoire != 1)
@@ -220,6 +223,9 @@ void init_jeu()
                 gotoxy(8,27);printf(" %s Entre un numero de colonne valide: ", jou2.nom);
                 gotoxy(38+taille,27);scanf("%d", &position1);
             } while(position1 < 0 || position1 > 6);
+            jouer_colonne(tour,position2);
+            victoire = verif_gain(jou2.symbole,position2);
+            tour=1;
         }
     } while( victoire != 1);
 }
