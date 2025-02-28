@@ -319,12 +319,213 @@ void jouer_colonne (int tour, int position)
     }
 }
 
-void verif_gain(char symbole, int position)
+int verif_gain(char symbole, int position)
 {
    int l; int compt = 0; int x = 38; int y = 22; int x2 = 55; int c = 0;int p = 0; int d = position;
-   
-    //vericale
 
+    //vericale
+    for (l = 0; l < 6; l++)
+    {
+        if (m.Mat[l][position] == symbole)
+        {
+            compt++;
+        }
+        if (m.Mat[l][position] != symbole)
+        {
+            compt = 0;
+        }
+        if (compt == 4 && jou1.symbole == symbole)
+        {
+            gotoxy(8,27);printf("Victoire sur la Verticale de %s " , jou1.nom);
+            return 1 ;
+            break;
+        }
+        if (compt == 4 && jou2.symbole == symbole)
+        {
+            gotoxy(8,27);printf("Victoire sur la Verticale de %s ", jou2.nom);
+            return 1 ;
+            break;
+        }
+    }
+
+    //horizontale
+    compt = 0;
+    for (l = 0; l < 6; l++)
+    {
+       for (c = 0; c < 6; c++)
+       {
+          compt = 0;
+
+        if (m.Mat[l][c] != symbole) compt = 0;
+        if (compt == 4 && jou1.symbole == symbole)
+        {
+            gotoxy(8,27);printf("Victoire sur l'Horizontale de %s " , jou1.nom);
+            return 1 ;
+            break;
+        }
+        if(compt == 4 && jou2.symbole == symbole)
+        {
+            gotoxy(8,27);printf("Victoire sur l'Horizontale de %s " , jou2.nom);
+            return 1 ;
+            break;
+        }
+        }
+    }
+
+    // Diagonale gauche
+    compt = 0;
+    for (l = 0; l < 6; l++)
+    {
+
+        if (m.Mat[l][position]==symbole )
+        {
+            p = l;
+            c = position;gotoxy(8,22); 
+            break; 
+        }  
+    }
+        for (l = p; l < 6; l++)
+        {
+            for (c = position; c > 0; c--)
+            {
+                if (m.Mat[l][c] == symbole)
+                {
+                    compt++;
+                    position = position-1;
+                    break;
+                }           
+                if (m.Mat[l][c] != symbole )compt=0;    
+            }
+            if (compt == 4 && jou1.symbole == symbole)
+            {
+                gotoxy(8,27);printf("Victoire sur la Diagonale Gauche Vers le Bas de %s " , jou1.nom);
+                return 1;
+                break;
+            }
+            if (compt == 4 && jou2.symbole == symbole)
+            {
+                gotoxy(8,27);printf("Victoire sur la Diagonale Gauche vers le Bas de %s " , jou2.nom);
+                return 1;
+                break;
+            }
+        }
+
+    //Diagonale Droite
+    compt = 0;
+    position = d;
+    
+    for (l = 0; l < 6; l++)
+    {
+        if (m.Mat[l][position] == symbole)
+        {
+            p = l;
+            c = position;gotoxy(8,22);
+            break; 
+        }  
+    }
+        for (l = p; l < 6; l++)
+        {
+            for (c = position; c < 7; c++)
+            {
+                if (m.Mat[l][c] == symbole)
+                {
+                    compt++;
+                    position +=1;
+                    break;
+                }           
+                if (m.Mat[l][c] != symbole) compt=0; 
+            }
+            if (compt == 4 && jou1.symbole == symbole)
+            {
+                gotoxy(8,27);printf("Victoire sur la Diagonale Droite Vers le Bas de %s " , jou1.nom);
+                return 1;
+                break;
+            }
+            if (compt == 4 && jou2.symbole == symbole)
+            {
+                gotoxy(8,27);printf("Victoire sur la Diagonale Droite Vers le Bas de %s " , jou2.nom);
+                return 1;
+                break;
+            }
+        }
+
+    //Diagonale haut Droite
+    compt = 0;
+    position = d;
+    
+    for (l = 0; l < 6; l++)
+    {
+        if (m.Mat[l][position] == symbole )
+        {
+            p = l;
+            c = position;gotoxy(8,22); 
+            break; 
+        }  
+    }
+        for (l = p; l > 0; l--)
+        {
+            for (c = position; c < 7; c++)
+            {
+                if (m.Mat[l][c] == symbole)
+                {
+                    compt++;
+                    position += 1;
+                    break;
+                }           
+                if (m.Mat[l][c] != symbole) compt=0;
+            }
+            if (compt == 4 && jou1.symbole==symbole)
+            {
+                gotoxy(8,27);printf("Victoire sur la Diagonale Droite Vers le Haut de %s " , jou1.nom);
+                return 1; 
+                break;
+            }
+            if (compt == 4 && jou2.symbole == symbole)
+            {
+                gotoxy(8,27);printf("Victoire sur la Diagonale Droite Vers le Haut  de %s " , jou2.nom);
+                return 1;
+                break;
+            }
+        }
+    
+    //Diagonale haut Gauche
+    compt = 0;
+    position = d;
+
+    for (l = 0; l < 6; l++)
+    {
+        if (m.Mat[l][position] == symbole)
+        {
+            p = l;
+            c = position;gotoxy(8,22); 
+            break; 
+        }  
+    }
+        for(l = p; l > 0 ; l--)
+        {
+            for (c = position; c > 0; c--)
+            {
+                if (m.Mat[l][c] == symbole)
+                {
+                   compt++;
+                   position -= 1;
+                   break; 
+                }    
+            }
+            if (compt == 4 && jou1.symbole==symbole)
+            {
+                gotoxy(8,27);printf("Victoire sur la Diagonale Gauche Vers le Haut de %s " , jou1.nom);
+                return 1;
+                break;
+            }
+            if (compt == 4 && jou2.symbole == symbole)
+            {
+                gotoxy(8,27);printf("Victoire sur la Diagonale Gauche Vers le Haut de %s " , jou2.nom);
+                return 1;
+                break;
+            }
+        }   
+return 0;
 }
 
 int main ()
