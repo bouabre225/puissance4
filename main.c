@@ -211,8 +211,8 @@ void init_jeu()
                 gotoxy(8,27);printf(" %s Entre un numero de colonne valide: ", jou1.nom);
                 gotoxy(38+taille,27);scanf("%d", &position1);
             } while(position1 < 0 || position1 > 6);
-            jouer_colonne(tour,position1);
-            victoire = verif_gain(jou1.symbole,position1);
+            Jouer_colonne(tour,position1);
+            victoire = Verif_gain(jou1.symbole,position1);
             tour=2;
         }
 
@@ -223,14 +223,14 @@ void init_jeu()
                 gotoxy(8,27);printf(" %s Entre un numero de colonne valide: ", jou2.nom);
                 gotoxy(38+taille,27);scanf("%d", &position1);
             } while(position1 < 0 || position1 > 6);
-            jouer_colonne(tour,position2);
-            victoire = verif_gain(jou2.symbole,position2);
+            Jouer_colonne(tour,position2);
+            victoire = Verif_gain(jou2.symbole,position2);
             tour=1;
         }
     } while( victoire != 1);
 }
 
-void jouer_colonne (int tour, int position)
+void Jouer_colonne (int tour, int position)
 {
     int l,col = 0; int newy = 7; int newx = 13; int a = position+1 ; int y = 0; int c = 4;
     char t; int b=0;
@@ -325,7 +325,7 @@ void jouer_colonne (int tour, int position)
     }
 }
 
-int verif_gain(char symbole, int position)
+int Verif_gain(char symbole, int position)
 {
    int l; int compt = 0; int x = 38; int y = 22; int x2 = 55; int c = 0;int p = 0; int d = position;
 
