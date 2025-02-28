@@ -148,6 +148,9 @@ void grille4puissance ()
     }
 }
 
+void Jouer_colonne (int tour, int position);
+int Verif_gain(char symbole, int position);
+
 void init_jeu()
 {
     char p1; char p2; int verif = 0; int taille; int tour; int victoire = 0;
