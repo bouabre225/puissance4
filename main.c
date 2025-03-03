@@ -353,12 +353,7 @@ void init_jeu(){
 
 
 }
-/*
-void Color(int t,int f)
-{
-	HANDLE H=GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(H,f*16+t);
-}*/
+
 
 int main()
 {
