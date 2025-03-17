@@ -46,7 +46,8 @@ void grille4puissance()
                 compt=0;     
                 collone++;
             }
-        }         l=l+col;
+        }         
+        l=l+col;
         gotoxy(x+l-3,y-1);printf("6"); 
         gotoxy(x,y+haut); printf("%c",179);   
         gotoxy(x+lon,y+haut); printf("%c",179);
